@@ -24,7 +24,7 @@ function search(event) {
 
   axios.get(apiUrl).then(displayTemperature);
 }
-//Feature 1
+//Feature 1 - Live Time
 function formatDate(now) {
   let hour = now.getHours();
   let minutes = now.getMinutes();
