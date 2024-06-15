@@ -12,6 +12,9 @@ function displayTemperature(response) {
   let displayWind = document.querySelector("#wind");
   let wind = response.data.wind.speed;
   displayWind.innerHTML = `${wind} p/h`;
+  let weatherInfo = document.querySelector("#weather-description");
+  let weatherDescription = response.data.condition.description;
+  weatherInfo.innerHTML = `${weatherDescription}`;
 }
 //API Key
 //Function to handle search
