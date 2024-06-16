@@ -24,6 +24,9 @@ function displayTemperature(response) {
   let timeStamp = response.data.time * 1000;
   let date = new Date(timeStamp);
   timeElement.innerHTML = formatDate(date);
+
+  let iconApi = document.querySelector("#api-icon");
+  iconApi.innerHTML = `<img src="${response.data.condition.icon_url}" class="temperature-icon"/>`;
 }
 //Feature- Live Time
 function formatDate(date) {

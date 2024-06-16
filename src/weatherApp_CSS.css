@@ -66,17 +66,21 @@ p {
 .temperature-value {
   font-size: 80px;
   font-weight: bold;
+  position: relative;
+  top: -20px;
 }
 .temperature-icon {
   position: relative;
-  top: -8px;
-  font-size: 35px;
+  top: -25px;
+  right: -10px;
+  width: 64px;
+  height: 60px;
   margin-right: 10px;
 }
 .temperature-unit {
   font-size: 28px;
   position: relative;
-  top: -38px;
+  top: -50px;
 }
 .belowWeatherInfo {
   color: #f65281;
