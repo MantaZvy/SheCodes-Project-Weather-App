@@ -67,3 +67,5 @@ function search(event) {
 
 let searchingBtn = document.querySelector("#search-bar");
 searchingBtn.addEventListener("submit", search);
+
+search("London");
