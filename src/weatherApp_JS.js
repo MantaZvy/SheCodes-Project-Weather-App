@@ -65,7 +65,30 @@ function search(event) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
+//Weather Forecast - JS Template
+function displayForecast() {
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let htmlForecast = "";
+  days.forEach(function (day) {
+    htmlForecast =
+      htmlForecast +
+      `<div class="weather-forecast-day">
+    <div class="weather-forecast-date">${day}</div>
+    <div class="weather-forecast-icon">🌤️</div>
+    <div class="weather-forecast-temperatures">
+    <span class="weather-forecast-max-temperature"> 22° </span>
+    <span class="weather-forecast-min-temperature"> 13° </span>
+    </div>
+    </div>
+    `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = htmlForecast;
+}
+
 let searchingBtn = document.querySelector("#search-bar");
 searchingBtn.addEventListener("submit", search);
 
+displayForecast();
 search("London");
