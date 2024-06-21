@@ -27,6 +27,8 @@ function displayTemperature(response) {
 
   let iconApi = document.querySelector("#api-icon");
   iconApi.innerHTML = `<img src="${response.data.condition.icon_url}" class="temperature-icon"/>`;
+
+  getForecast(response.data.city);
 }
 //Feature- Live Time
 function formatDate(date) {
@@ -65,8 +67,17 @@ function search(event) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
+//Get forecast data
+function getForecast(city) {
+  let apiKey = "fcd20cbab033a83d4912e96fcoedf8t4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 //Weather Forecast - JS Template
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
+
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let htmlForecast = "";
   days.forEach(function (day) {
@@ -90,5 +101,4 @@ function displayForecast() {
 let searchingBtn = document.querySelector("#search-bar");
 searchingBtn.addEventListener("submit", search);
 
-displayForecast();
 search("London");

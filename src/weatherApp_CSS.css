@@ -106,7 +106,11 @@ p {
   opacity: 0.5;
 }
 .weather-forecast-icon {
+  margin-top: 8px;
   font-size: 30px;
+}
+.weather-forecast-temperatures {
+  margin-top: 8px;
 }
 footer p {
   text-align: center;
