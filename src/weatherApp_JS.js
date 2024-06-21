@@ -55,16 +55,18 @@ function formatDate(date) {
 
   return `${day} ${hours}:${minutes}`;
 }
-//API Key
-//Function to handle search
-function search(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-section");
-  let city = searchInput.value;
+//Store API & search
+function searchCity(city) {
   let apiKey = "fcd20cbab033a83d4912e96fcoedf8t4";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayTemperature);
+}
+//Function to handle search
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-section");
+  searchCity(searchInput.value);
 }
 
 //Get forecast data
@@ -101,4 +103,4 @@ function displayForecast(response) {
 let searchingBtn = document.querySelector("#search-bar");
 searchingBtn.addEventListener("submit", search);
 
-search("London");
+searchCity("London");
