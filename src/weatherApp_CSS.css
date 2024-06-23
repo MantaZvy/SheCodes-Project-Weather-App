@@ -105,12 +105,15 @@ p {
 .weather-forecast-min-temperature {
   opacity: 0.5;
 }
-.weather-forecast-icon {
+.weather-forecast-icon img {
   margin-top: 8px;
-  font-size: 30px;
+  width: 75%;
+  display: block;
+  margin: 0 auto;
 }
 .weather-forecast-temperatures {
   margin-top: 8px;
+  font-size: 17px;
 }
 footer p {
   text-align: center;

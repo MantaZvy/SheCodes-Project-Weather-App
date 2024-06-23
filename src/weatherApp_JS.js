@@ -1,7 +1,6 @@
 //Weather API
 //Display temperature
 function displayTemperature(response) {
-  console.log(response);
   let tempElement = document.querySelector("#temp-value");
   tempElement.innerHTML = Math.round(response.data.temperature.current);
 
@@ -69,6 +68,13 @@ function search(event) {
   searchCity(searchInput.value);
 }
 
+//Formatting day for the displayForecast function
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
 //Get forecast data
 function getForecast(city) {
   let apiKey = "fcd20cbab033a83d4912e96fcoedf8t4";
@@ -78,22 +84,27 @@ function getForecast(city) {
 
 //Weather Forecast - JS Template
 function displayForecast(response) {
-  console.log(response.data);
-
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let htmlForecast = "";
-  days.forEach(function (day) {
-    htmlForecast =
-      htmlForecast +
-      `<div class="weather-forecast-day">
-    <div class="weather-forecast-date">${day}</div>
-    <div class="weather-forecast-icon">🌤️</div>
-    <div class="weather-forecast-temperatures">
-    <span class="weather-forecast-max-temperature"> 22° </span>
-    <span class="weather-forecast-min-temperature"> 13° </span>
-    </div>
-    </div>
-    `;
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      htmlForecast =
+        htmlForecast +
+        `<div class="weather-forecast-day">
+      <div class="weather-forecast-date">${formatDay(day.time)}</div>
+      <div class="weather-forecast-icon" id="forecast-icon"><img src="${
+        day.condition.icon_url
+      }" alt="current weather icon"/></div>
+      <div class="weather-forecast-temperatures">
+      <span class="weather-forecast-max-temperature">${Math.round(
+        day.temperature.maximum
+      )} °</span>
+        <span class="weather-forecast-min-temperature">${Math.round(
+          day.temperature.minimum
+        )} °</span>
+          </div>
+          </div>
+          `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
